@@ -1,0 +1,44 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+<main id="films_details">
+    <div class="myimage">
+        <img src="{{ url_for('media_films', filename=my_proy.films.film_image) }}">
+    </div>
+    <div class="mydetails">
+        <div class="filmsdetails">
+            <div class="filmTitle">
+                <h3>{{ my_proy.film_title }}</h3>
+            </div>
+            <div class="filmSynopsis">
+                <h3>SYNOPSIS:</h3>
+                <p class="synopsiscontent">
+                    {{ my_proy.films.film_synopsis }}
+                </p>
+            </div>
+        </div>
+        <div class="filmproyections">
+            <h3>Proyections:</h3>
+            {% if month_ProyFilm %}
+            <table>
+                <tr>
+                    <th>SALA</th>
+                    <th>SESSION</th>
+                    <th>FECHA</th>
+                </tr>
+                {% for proyection in month_ProyFilm %}
+                <tr>
+                    <td>{{ proyection.room_number }}</td>
+                    <td>{{ proyection.proyection_time }}</td>
+                    <td>{{ proyection.proyection_date }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <h3>There are not proyections</h3>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

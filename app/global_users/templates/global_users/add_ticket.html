@@ -1,0 +1,54 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+<main id="films_details">
+    <div class="myimage">
+        <img src="{{ url_for('media_films', filename=my_film.film_image) }}">
+    </div>
+    <div class="mydetails">
+        <p id="headtext">Get Ticket</p>
+        <div class="myticketform">
+            <form method="post" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p>
+                    <h4>CHOOSE A SESSIONS</h4>
+                    {% for x in all_Proy %}
+                        <input type="checkbox" name="mysession" value="{{ x.id }}">
+                        <label for="mysession">{{ x.proyection_date }}, {{ x.proyection_time }}</label><br>
+                    {% endfor %}
+                </p>
+                {% if error1 %}
+                    <p style="color: red;" id="myerror">{{ error1 }}</p>
+                {% endif %}
+                <p>
+                    {{ form.seatss_number(class_="seatss_number", placeholder="seats's number") }}<br>
+                    {% for error in form.seatss_number.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </p>
+                {% if error %}
+                    <p style="color: red;" id="myerror">{{ error }}</p>
+                {% endif %}
+                <p>
+                    {{ form.submit(class_="submitlabel") }}
+                </p>
+            </form>
+        </div>
+    </div>
+</main>
+<script>
+    $("input:checkbox").on('click', function() {
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+        });
+</script>
+{% endblock %}

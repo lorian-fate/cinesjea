@@ -1,0 +1,66 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+
+<nav class="adminnav">
+    <div class="innerdivnav">
+        <input type="button" value="Users" id="user" onclick="show_user_op()">
+        <input type="button" value="Films" id="film" onclick="show_fiml_op()">
+        <input type="button" value="Rooms" id="rooms" onclick="show_room_op()">
+        <input type="button" value="Proyections" id="proyections" onclick="show_pro_op()">
+    </div>
+</nav>
+<nav class="adminfilmnav" id="adminfilmnav">
+    <div class="innerfilnav">
+        <a href="">All Films</a>
+        <a href="{{ url_for('admin.add_films')}}">Add Film</a>
+    </div>
+</nav>
+<nav class="adminUsernav" id="adminUsernav">
+    <div class="innerfilnav">
+        <a href="">All Users</a>
+        <a href="">Add User</a>
+    </div>
+</nav>
+<nav class="adminRoomnav" id="adminRoomnav">
+    <div class="innerfilnav">
+        <a href="">All Rooms</a>
+        <a href="{{ url_for('admin.add_room')}}">Add Rooms</a>
+    </div>
+</nav>
+<nav class="adminPronav" id="adminProynav">
+    <div class="innerfilnav">
+        <a href="">All Proyections</a>
+        <a href="{{ url_for('admin.add_proyection')}}">Add Proyections</a>
+    </div>
+</nav>
+<main>
+    <div id="allFilm">
+        {% for film in myfilms.items %}
+            <div class="myfilm" id="myfilm">
+                <a href="{{ url_for('admin.show_films', film_id=film.id) }}">
+                    <img src="{{ url_for('media_films', filename=film.film_image) }}"/>
+                </a>
+            </div>
+        {% endfor%}
+    </div>
+    <div class=pagination>
+        {%- for page in myfilms.iter_pages() %}
+            {% if page %}
+                {% if page != myfilms.page %}
+                    <button type="button">
+                        <a href="{{ url_for('admin.index', page=page) }}">{{ page }}</a>
+                    </button>
+                {% else %}
+                    <button type="button">
+                        <strong>{{ page }}</strong>
+                    </button>
+                {% endif %}
+            {% else %}
+                <span class=ellipsis>…</span>
+            {% endif %}
+        {%- endfor %}
+    </div>
+</main>
+{% endblock %}

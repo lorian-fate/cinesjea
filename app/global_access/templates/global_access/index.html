@@ -1,0 +1,240 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+
+<nav class="adminnav">
+    <div class="innernav">
+        <input type="button" value="Todas las Proyecciones" id="allProyections" onclick="mostrar_todas()">
+        <input type="button" value="Proyecciones este mes" id="proyections_month" onclick="mostrar_mes()">
+        <input type="button" value="Proyecciones esta semana" id="proyections_week" onclick="mostrar_semanas()">
+        <input type="button" value="Próximos estrenos" id="estrenos" onclick="mostrar_est()">
+    </div>
+</nav>
+<main onload="show_b()">
+    <div class="mostrados_proximas" id="mostrados_proximas">
+        <div class="innermostrados">
+            <p>Proximas proyecciones</p>
+        </div>
+    </div>
+    <div class="mostrados_todas" id="mostrados_todas">
+        <div class="innermostrados">
+            <p>Todas proyecciones</p>
+        </div>
+    </div>
+    <div class="mostrados_mes" id="mostrados_mes">
+        <div class="innermostrados">
+            <p>Proyecciones de es mes</p>
+        </div>
+    </div>
+    <div class="mostrados_semana" id="mostrados_semana">
+        <div class="innermostrados">
+            <p>Proyecciones de esta semana</p>
+        </div>
+    </div>
+    <div class="mostrados_estrenos" id="mostrados_estrenos">
+        <div class="innermostrados">
+            <p>Proximos estrenos</p>
+        </div>
+    </div>
+    
+    <div class="contenedor-principal" id="div1">
+        <button role="button" id="flecha-izquierda" class="flecha-izquierda">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <div class="contenedor-carousel">
+            <div class="carousel">
+                {% for mypro in myproyection %}
+                <div class="pelicula">
+                    <a href="{{ url_for('global_access.proyection_details_next', nextTD_id=mypro.id) }}">
+                        <img src="{{ url_for('media_films', filename=mypro.films.film_image) }}">
+                    </a>
+                </div>  
+                {% endfor%}
+            </div>
+        </div>
+        <button role="button" id="flecha-derecha" class="flecha-derecha">
+            <i class="fas fa-angle-right"></i>
+        </button>
+    </div>
+
+    <div class="contenedor-principal" id="div2">
+        <button role="button" id="flecha-izquierda-todas" class="flecha-izquierda">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <div class="contenedor-carousel-todas">
+            <div class="carousel">
+                {% for all_pr in all_P %}
+                <div class="pelicula">
+                    <a href="{{ url_for('global_access.proyection_details_all', myFilm_id=all_pr.films.id) }}">
+                        <img src="{{ url_for('media_films', filename=all_pr.films.film_image) }}">
+                    </a>
+                </div>  
+                {% endfor%}
+            </div>
+        </div>
+        <button role="button" id="flecha-derecha-todas" class="flecha-derecha">
+            <i class="fas fa-angle-right"></i>
+        </button>
+    </div>
+
+
+    <div class="contenedor-principal" id="div3">
+        <button role="button" id="flecha-izquierda-mes" class="flecha-izquierda">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <div class="contenedor-carousel-mes">
+            <div class="carousel">
+                {% for t_month in this_month %}
+                <div class="pelicula">
+                    <a href="{{ url_for('global_access.proyection_details_month', myFilm_id=t_month.film_id) }}">
+                        <img src="{{ url_for('media_films', filename=t_month.films.film_image) }}">
+                    </a>
+                </div>  
+                {% endfor%}
+            </div>
+        </div>
+        <button role="button" id="flecha-derecha-mes" class="flecha-derecha">
+            <i class="fas fa-angle-right"></i>
+        </button>
+    </div>
+
+
+    <div class="contenedor-principal" id="div4">
+        <button role="button" id="flecha-izquierda-semana" class="flecha-izquierda">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <div class="contenedor-carousel-semana">
+            <div class="carousel">
+                {% for t_week in this_week %}
+                <div class="pelicula">
+                    <a href="{{ url_for('global_access.proyection_details_week', proyection_id=t_week.id) }}">
+                        <img src="{{ url_for('media_films', filename=t_week.films.film_image) }}">
+                    </a>
+                </div>  
+                {% endfor%}
+            </div>
+        </div>
+        <button role="button" id="flecha-derecha-semana" class="flecha-derecha">
+            <i class="fas fa-angle-right"></i>
+        </button>
+    </div>
+
+    <div class="contenedor-principal" id="div5">
+        <button role="button" id="flecha-izquierda-estrenos" class="flecha-izquierda">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <div class="contenedor-carousel-estrenos">
+            <div class="carousel">
+                {% for next_o in next_opening %}
+                <div class="pelicula">
+                    <a href="{{ url_for('global_access.proyection_details_all', myFilm_id=next_o.id) }}">
+                        <img src="{{ url_for('media_films', filename=next_o.film_image) }}">
+                    </a>
+                </div>  
+                {% endfor%}
+            </div>
+        </div>
+        <button role="button" id="flecha-derecha-estrenos" class="flecha-derecha">
+            <i class="fas fa-angle-right"></i>
+        </button>
+    </div>
+
+</main>
+
+<script>
+    const filaestrenos = document.querySelector('.contenedor-carousel-estrenos');
+    const filatodas = document.querySelector('.contenedor-carousel-todas');
+    const filasemana = document.querySelector('.contenedor-carousel-semana');
+    const filames = document.querySelector('.contenedor-carousel-mes');
+
+    var flechaIzquierdaEstrenos = document.getElementById('flecha-izquierda-estrenos');
+    var flechaDerechaEstrenos = document.getElementById('flecha-derecha-estrenos');
+
+    var flechaIzquierdaTodas = document.getElementById('flecha-izquierda-todas');
+    var flechaDerechaTodas = document.getElementById('flecha-derecha-todas');
+
+    var flechaIzquierdaSemana = document.getElementById('flecha-izquierda-semana');
+    var flechaDerechaSemana = document.getElementById('flecha-derecha-semana');
+
+    var flechaIzquierdaMes = document.getElementById('flecha-izquierda-mes');
+    var flechaDerechaMes = document.getElementById('flecha-derecha-mes');
+
+    /*
+    const filaprincipal = document.querySelector('.contenedor-carousel');
+    var flechaIzquierda = document.getElementById('flecha-izquierda');
+    var flechaDerecha = document.getElementById('flecha-derecha');
+    flechaDerecha.addEventListener('click', function(){
+        filaprincipal.scrollLeft += filaprincipal.offsetWidth;
+        alert(len(filaprincipal))
+    });
+    flechaIzquierda.addEventListener('click', function(){
+        filaprincipal.scrollLeft -= filaprincipal.offsetWidth;
+        alert("here left")
+    });*/
+    var fila = $('.contenedor-carousel');
+    var flechaIzquierda = $('#flecha-izquierda');
+    var flechaDerecha = $('#flecha-derecha');
+
+    $(flechaDerecha).on("click", function(){    
+        var scrollDer = fila.scrollLeft() + fila.width();
+        /*if(fila.scrollLeft()+fila.width()/2>=fila[0].scrollWidth){
+            scrollDer = fila[0].scrollWidth-fila.width();        
+        }
+        if(fila.scrollLeft()+fila.width()>=fila[0].scrollWidth){
+            scrollDer = 0;
+            //flechaDerecha.style.display = 'none';     
+        }*/
+        fila.scrollLeft(scrollDer);
+        
+    });
+
+    $(flechaIzquierda).on("click", function(){     
+        var scrollIzq = fila.scrollLeft() - fila.width(); 
+        /*if(fila.scrollLeft()<=fila.width()){
+            scrollIzq=0;
+        }
+        if(fila.scrollLeft()<=0){
+            scrollIzq=fila[0].scrollWidth-fila.width();
+        }*/
+        fila.scrollLeft(scrollIzq);
+    });
+
+
+
+    flechaDerechaEstrenos.addEventListener('click', function(){
+        filaestrenos.scrollLeft += filaestrenos.offsetWidth;
+    });
+    flechaIzquierdaEstrenos.addEventListener('click', function(){
+        filaestrenos.scrollLeft -= filaestrenos.offsetWidth;
+    });
+
+    flechaDerechaTodas.addEventListener('click', function(){
+        filatodas.scrollLeft += filatodas.offsetWidth;
+    });
+    flechaIzquierdaTodas.addEventListener('click', function(){
+        filatodas.scrollLeft -= filatodas.offsetWidth;
+    });
+
+
+
+
+    flechaDerechaMes.addEventListener('click', function(){
+        filames.scrollLeft += filames.offsetWidth;
+    });
+    flechaIzquierdaMes.addEventListener('click', function(){
+        filames.scrollLeft -= filames.offsetWidth;
+    });
+
+    flechaDerechaSemana.addEventListener('click', function(){
+        filasemana.scrollLeft += filasemana.offsetWidth;
+    });
+    flechaIzquierdaSemana.addEventListener('click', function(){
+        filasemana.scrollLeft -= filasemana.offsetWidth;
+    });
+    
+</script>
+{% endblock %}
+
+
+    

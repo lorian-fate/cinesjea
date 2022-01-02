@@ -1,0 +1,46 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+    <div id="divBuscador">
+        <div class="myinput">
+            <input type="search" id="input-search" placeholder="Buscar aqui">
+        </div>
+        <div class="content-search">
+            <div class="content-table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for films in all_films %}
+                        <tr>
+                            <td><a href="{{ url_for('global_access.proyection_details_all', myFilm_id=films.id) }}">
+                                <img src="{{ url_for('media_films', filename=films.film_image) }}">
+                                <span>{{ films.film_title }}</span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var buscador = $("#table").DataTable();
+
+        $("#input-search").keyup(function(){
+            
+            buscador.search($(this).val()).draw();
+            
+            if ($("#input-search").val() == ""){
+                $(".content-search").fadeOut(300);
+            }else{
+                $(".content-search").fadeIn(300);
+            }
+        }) 
+    </script>
+{% endblock %}

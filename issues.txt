@@ -1,0 +1,9 @@
+p:01._AttributeError: 'NoneType' object has no attribute 'get_engine'
+r:01._ I've add db in migrate.init_app(app)
+
+p:02._FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by 
+default in the future.  Set it to True or False to suppress this warning.
+r:02._I added (SECRET_KEY, SQLALCHEMY_TRACK_MODIFICATIONS) parameter in the config.py file
+
+p:03._el redireccionamiento era a una pagina distinta
+r:03._cambie el url de vista ya que coge la primera y las tenia iguales

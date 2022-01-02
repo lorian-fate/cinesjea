@@ -1,0 +1,144 @@
+
+
+
+
+
+
+#divBuscador{
+    /*background-color: rgba(49, 49, 49, 0.993);*/
+    width: 800px;
+    margin: auto;
+}
+#divBuscador{
+    margin-top: 100px;
+    border-radius: 30px;
+}
+.myinput{
+    width: 800px;
+    margin:auto;
+    border: none;
+    background-color: rgba(49, 49, 49, 0.993);
+    border-radius: 15px;
+}
+
+
+/*------ another seeker ------*/
+
+#input-search{
+    border: none;
+    outline: none;
+}
+
+#input-search{
+    width: 790px;
+    height: 40px;
+    color: white;
+    background-color: rgba(49, 49, 49, 0.993);
+    font-size: 20px;
+    text-indent: 10px;
+    border-radius: 15px;
+}
+
+.content-search{
+    top: 60px;
+    left: 0;
+    display: none;
+}
+
+.content-table{
+    margin-left: 10px;
+}
+
+.content-table table tbody{
+    padding-top: 20px;
+    width: 775px;
+    margin: auto;
+}
+.content-table table tbody{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+tbody tr td a{
+    text-decoration: none;
+
+}
+tbody tr td a span{
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+tbody tr td a{
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: 350px;
+    border-radius: 10px;
+    transition: all .2s ease-in-out;
+}
+tbody tr td a img{
+    width: 180px;
+    height: 270px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+tbody tr td a:hover{
+    transform: scale(1.1);
+}
+
+#table_length, #table_filter, #table_info, #table_paginate{
+    display: none;
+}
+
+
+
+/*---------  RESPONSIVE SETTING  ---------*/
+@media screen and (max-width: 768px){
+    #divBuscador{
+        width: 410px;
+        margin: auto;
+    }
+    #divBuscador{
+        margin-top: 100px;
+    }
+    .myinput{
+        width: 400px;
+    }
+    #input-search{
+        width: 390px;
+    }
+    .content-search{
+        margin: auto;
+        width: 430px;
+        margin-top: 20px;
+    }
+    
+    .content-table{
+        margin: auto;
+    }
+
+    .content-table table tbody{
+        padding-top: 20px;
+        width: 425px;
+        margin: auto;
+    }
+
+    tbody tr td a{
+        width: 110px;
+        height: 230px;
+    }
+    tbody tr td a img{
+        width: 110px;
+        height: 160px;
+    }
+    tbody tr td a span{
+        padding: 10px;
+        color: white;
+        text-align: center;
+        font-size: .8em;
+    }
+
+}

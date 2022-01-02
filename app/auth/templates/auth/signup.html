@@ -1,0 +1,38 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+    {% if error %}
+        <p style="color: red;"><strong>Error:</strong>{{ error }}</p>
+    {% endif %}
+    <form action="" id="sigupform" method="post" novalidate>
+        <p id="headtext">Sign Up</p>
+        {{ form.hidden_tag() }}
+        <div id="sigupformdiv">
+            {% if error %}
+                <p style="color: rgb(255, 0, 0);" id="myerror"><strong>Error:</strong>{{ error }}</p>
+            {% endif %}
+            <p>
+                {{ form.username(class_="signUser", placeholder_="username") }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.email(class_="signEmail", placeholder_="email") }}<br>
+                {% for error in form.email.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password(class_="signPass", placeholder_="password") }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit(class_="signSub") }}
+            </p>
+        </div>
+    </form>
+{% endblock %}

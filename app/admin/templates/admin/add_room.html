@@ -1,0 +1,30 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+
+<form action="" method="post" id="filmform" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag() }}
+    <div id="creatediv">
+        <p id="headtext">Adding room</p>
+        {% if error %}
+            <p style="color: red;" id="myerror"><strong>Error:</strong>{{ error }}</p>
+        {% endif %}
+        <p>
+            {{ form.room_name(class_="film_title", placeholder="name") }}<br>
+            {% for error in form.room_name.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.seatss_number(class_="film_title", placeholder="seats's number") }}<br>
+            {% for error in form.seatss_number.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.submit(class_="film_submit") }}
+        </p>
+    </div>
+</form>
+{% endblock %}

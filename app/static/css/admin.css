@@ -1,0 +1,196 @@
+
+
+
+
+.adminnav{
+    width: 900px;
+    height: 40px;
+    margin: auto;
+}
+.innerdivnav, .innerfilnav{
+    width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.adminnav .innerdivnav input{
+    color: white;
+    font-size: 1.5em;
+    margin-top: 30px;
+    background-color: rgba(70, 165, 165, 0);
+    width: 200px;
+}
+
+.adminfilmnav, .adminUsernav, .adminPronav, .adminRoomnav{
+    display: none;
+    background-color: rgb(44, 44, 44);
+    width: 800px;
+    height: 40px;
+    margin: auto;
+    border-radius: 10px;
+    transition-duration: 1s;
+}
+.innerfilnav{
+    margin-top: 30px;
+
+}
+.innerfilnav a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+/*---  global index ---*/
+.innernav{
+    width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.innernav input{
+    font-size: 0.9em;
+    color: white;
+    margin-top: 30px;
+    background-color: rgba(70, 165, 165, 0);
+    width: 200px;
+    height: 40px;
+
+}
+.innernav input:hover{
+    cursor: pointer;
+}
+/*--------- details films ---------*/
+#films_details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.myimage, .mydetails{
+    background-color: rgba(177, 177, 177, 0);
+    border-radius: 20px;
+    border: 2px solid white;
+}
+.myimage{
+    margin-top: 5px;
+    width: 420px;
+    height: 605px;
+}
+.myimage img{
+    width: 420px;
+    height: 605px;
+    border-radius: 20px;
+}
+.mydetails{
+    margin-top: 30px;
+    width: 600px;
+    height: 550px;
+    padding-left: 20px;
+    border-radius: 20px;
+}
+.mydetails .filmproyections table tr th,
+.mydetails .filmproyections table tr td{
+    border: 1px solid rgb(255, 255, 255);
+    width: 185px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+
+.filmTitle h3{
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+.filmsdetails .filmSynopsis h3,
+.filmsdetails .filmSynopsis p,
+.filmsdetails .filmOpening h3,
+.filmproyections h3{
+    color: white;
+}
+.filmsdetails .filmSynopsis p{
+    width: 555px;
+    text-align: justify;
+}
+/*--- buttons ---*/
+.buttonsUD{
+    margin: auto;
+    width: 410px;
+}
+.buttonsUD{
+    position: absolute;
+    top: 590px;
+    left: 55.5%;
+}
+.buttonsUD a input{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    font-weight: bold;
+    /*border: 2px solid white;*/
+}
+.buttonsUD a input:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+
+/*---------  RESPONSIVE SETTING  ---------*/
+@media screen and (max-width: 768px){
+    /*----  body  ---*/
+    .adminnav{
+        width: 480px;
+    }
+    .innernav{
+        width: 480px;
+        margin: auto;
+
+    }
+    .innernav{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .innernav input{
+        width: 120px;
+        font-size: .55em;
+    }
+
+
+    .myimage{
+        display: none;
+    }
+
+    .mydetails{
+        width: 470px;
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+    .mydetails{
+        margin-top: 30px;
+    }
+    .filmsdetails .filmSynopsis p{
+        width: 450px;
+    }
+    .mydetails .filmproyections table tr th,
+    .mydetails .filmproyections table tr td{
+        width: 145px;
+    }
+
+    .innerdivnav{
+        width: 480px;
+    }
+
+
+}

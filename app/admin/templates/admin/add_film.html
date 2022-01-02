@@ -1,0 +1,52 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+<form action="" method="post" id="filmform" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag() }}
+    <div id="creatediv">
+        <p id="headtext">Adding Film</p>
+        {% if error %}
+            <p style="color: red;" id="myerror"><strong>Error:</strong>{{ error }}</p>
+        {% endif %}
+        <p>
+            {{ form.title(class_="film_title", placeholder="title") }}<br>
+            {% for error in form.title.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.category.label(class_="selectlabel") }}
+            {{ form.category(class_="selectdiv") }}<br>
+            {% for error in form.category.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.premiere.label(class_="selectlabel") }}
+            {{ form.premiere(class_="selectdiv") }}<br>
+            {% for error in form.premiere.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.synopsis(class_="film_synopsis", placeholder="synopsis") }}<br>
+            {% for error in form.synopsis.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.film_image(class_="film_image") }}<br>
+            {% for error in form.film_image.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            {% if error %}
+                <p style="color: red;" id="myerror"><strong>Error:</strong>{{ error }}</p>
+            {% endif %}
+        </p>
+        <p>
+            {{ form.submit(class_="film_submit") }}
+        </p>
+    </div>
+</form>
+{% endblock %}

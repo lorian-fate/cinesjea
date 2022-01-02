@@ -1,0 +1,39 @@
+{% extends "base_template.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="mydivlogin">
+        <form action="" method="post" novalidate class="myformlogin">
+            
+            {{ form.hidden_tag() }}
+            <div class="formdiv">
+                <p id="headtext">Sign In</p>
+                <p>
+                    {{ form.username(class_="usernamelabel", placeholder_="username") }}<br>
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{ form.password(class_="passwordlabel", placeholder_="password") }}<br>
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </p>
+                <p id="rememberlabel">
+                    {{ form.remember_me() }} {{ form.remember_me.label }}
+                </p>
+                {% if error %}
+                    <p style="color: red;" id="myerror">{{ error }}</p>
+                {% endif %}
+                <p>
+                    {{ form.submit(class_="submitlabel") }}
+                </p>
+                <p>
+                    ¿No tienes cuenta? <a href="{{ url_for('auth.signup') }}">Regístrate</a>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock %}

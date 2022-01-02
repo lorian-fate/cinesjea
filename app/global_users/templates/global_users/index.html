@@ -1,0 +1,81 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+<nav class="adminnav">
+    <div class="innerdivnav">
+        <input type="button" value="Tickets" id="ticket" onclick="myTicket()">
+        <input type="button" value="Proyections" id="proyections" onclick="myProyec()">
+    </div>
+</nav>
+<main id="user-all-p">
+    <div class="contenedor-principal" id="divPro">
+        <button role="button" id="flecha-izquierda" class="flecha-izquierda">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <div class="contenedor-carousel">
+            <div class="carousel">
+                {% for mypro in next_pro %}
+                <div class="pelicula">
+                    <a href="{{ url_for('global_users.next_proyection', myFilm_id=mypro.films.id) }}">
+                        <img src="{{ url_for('media_films', filename=mypro.films.film_image) }}">
+                    </a>
+                </div>  
+                {% endfor%}
+            </div>
+        </div>
+        <button role="button" id="flecha-derecha" class="flecha-derecha">
+            <i class="fas fa-angle-right"></i>
+        </button>
+    </div>
+    <div id="dicTicket">
+        <div class="divTicInner">
+            {% if my_ticket %}
+                {% for x in my_ticket %}
+                    <div class="film-ticket">
+                        <div class="upInfo">
+                            <p id="filmname">{{ x.film_name|upper }}</p>
+                            <h2 id="cinename">CINES JEA</h2>
+                        </div>
+                        <div class="downInfo">
+                            <h3>{{ x.proyection_date }}, {{ proyection_time }}</h3>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3>There'arent tickets yet {{current_user.id}}</h3>
+            {% endif %}
+        </div>
+    </div>
+</main>
+<script>
+    var fila = $('.contenedor-carousel');
+    var flechaIzquierda = $('#flecha-izquierda');
+    var flechaDerecha = $('#flecha-derecha');
+
+    $(flechaDerecha).on("click", function(){    
+        var scrollDer = fila.scrollLeft() + fila.width();
+        /*if(fila.scrollLeft()+fila.width()/2>=fila[0].scrollWidth){
+            scrollDer = fila[0].scrollWidth-fila.width();        
+        }
+        if(fila.scrollLeft()+fila.width()>=fila[0].scrollWidth){
+            scrollDer = 0;
+            //flechaDerecha.style.display = 'none';     
+        }*/
+        fila.scrollLeft(scrollDer);
+        
+    });
+
+    $(flechaIzquierda).on("click", function(){     
+        var scrollIzq = fila.scrollLeft() - fila.width(); 
+        /*if(fila.scrollLeft()<=fila.width()){
+            scrollIzq=0;
+        }
+        if(fila.scrollLeft()<=0){
+            scrollIzq=fila[0].scrollWidth-fila.width();
+        }*/
+        fila.scrollLeft(scrollIzq);
+    });
+</script>
+
+{% endblock %}

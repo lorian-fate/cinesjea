@@ -1,0 +1,47 @@
+{% extends "base_template.html" %}
+
+{% block title %}CINES JEA{% endblock %}
+{% block content %}
+<form action="" method="post" id="filmform" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag() }}
+    <div id="creatediv">
+        <p id="headtext">Adding Proyection</p>
+        <p>
+            {{ form.film_name.label(class_="selectlabel") }}
+            {{ form.film_name(class_="selectdiv") }}<br>
+            {% for error in form.film_name.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.room_name.label(class_="selectlabel") }}
+            {{ form.room_name(class_="selectdiv") }}<br>
+            {% for error in form.room_name.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.proyection_date.label(class_="selectlabel") }}
+            {{ form.proyection_date(class_="selectdiv") }}<br>
+            {% for error in form.proyection_date.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {% if error %}
+                <p style="color: red;" id="myerror"><strong>Error:</strong>{{ error }}</p>
+            {% endif %}
+        </p>
+        <p>
+            {{ form.proyection_time.label(class_="selectlabel") }}
+            {{ form.proyection_time(class_="selectdiv") }}<br>
+            {% for error in form.proyection_time.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.submit(class_="film_submit") }}
+        </p>
+    </div>
+</form>
+{% endblock %}

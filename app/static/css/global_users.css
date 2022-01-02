@@ -1,0 +1,86 @@
+
+
+
+
+#user-all-p{
+    margin-top: 140px;
+}
+
+.myticketform{
+    width: 255px;
+    margin: auto;
+}
+
+.seatss_number{
+    width: 248px;
+    height: 30px;
+    background-color: white;
+    font-size: 1.2em;
+}
+/*------  hide and show both div ------*/
+#dicTicket{
+    display: none;   
+}
+#dicTicket{
+    margin: auto;
+    width: 900px;
+}
+.divTicInner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#dicTicket .film-ticket{
+    width: 360px;
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 5px solid rgb(172, 172, 172)
+}
+.upInfo, .downInfo{
+    margin-left: 20px;
+}
+.upInfo{
+    margin-top: -25px;
+}
+#cinename{
+    margin-top: -30px;
+    color: gray;
+}
+.downInfo h3{
+    color: gray;
+}
+.upInfo p{
+    overflow: hidden;
+    color: white;
+    white-space: nowrap;
+    height: 45px;
+    width: 330px;
+}
+#filmname{
+    font-size: 2.2em;
+    font-weight: bold;
+    text-overflow: ellipsis;
+}
+.downInfo{
+    margin-top: 60px;
+}
+
+
+
+/*---------  RESPONSIVE SETTING  ---------*/
+@media screen and (max-width: 768px){
+    #dicTicket{
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 370px;
+    }
+    .divTicInner{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}

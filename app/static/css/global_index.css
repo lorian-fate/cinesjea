@@ -1,0 +1,185 @@
+/* ---- ----- ----- Contenedor Principal y Flechas ----- ----- ----- */
+.contenedor-principal {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+.contenedor-principal{
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    width: 1300px;
+	background-color: rgba(255, 255, 255, 0.05);
+}
+.contenedor-principal .flecha-izquierda,
+.contenedor-principal .flecha-derecha {
+	display: block;
+	position: absolute;
+	border: none;
+	background: rgba(0,0,0,0.3);
+	font-size: 40px;
+	height: 50%;
+	top: calc(50% - 25%);
+	line-height: 40px;
+	width: 50px;
+	color: #fff;
+	cursor: pointer;
+	z-index: 500;
+	transition: .2s ease all;
+}
+
+.contenedor-principal .flecha-izquierda:hover,
+.contenedor-principal .flecha-derecha:hover {
+	background: rgba(0,0,0, .9);
+}
+
+.contenedor-principal .flecha-izquierda {
+	left: 0;
+}
+
+.contenedor-principal .flecha-derecha {
+	right: 0;
+}
+
+/* ---- ----- ----- Carousel ----- ----- ----- */
+.contenedor-carousel, 
+.contenedor-carousel-estrenos,
+.contenedor-carousel-todas,
+.contenedor-carousel-semana,
+.contenedor-carousel-mes{
+	width: 100%;
+	padding: 20px 0;
+	overflow: hidden;
+	scroll-behavior: smooth;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.contenedor-carousel .carousel,
+.contenedor-carousel-estrenos .carousel,
+.contenedor-carousel-todas .carousel,
+.contenedor-carousel-semana .carousel,
+.contenedor-carousel-mes .carousel{
+	display: inline-flex;
+}
+
+
+.contenedor-carousel .carousel .pelicula, 
+.contenedor-carousel-estrenos .carousel .pelicula,
+.contenedor-carousel-todas .carousel .pelicula,
+.contenedor-carousel-semana .carousel .pelicula,
+.contenedor-carousel-mes .carousel .pelicula{
+    background-color: rgba(255, 255, 118, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    width: 258px;
+    height: 387px;
+}
+
+.contenedor-carousel .carousel .pelicula img,
+.contenedor-carousel-estrenos .pelicula img,
+.contenedor-carousel-todas .carousel .pelicula img,
+.contenedor-carousel-semana .carousel .pelicula img,
+.contenedor-carousel-mes .carousel .pelicula img{
+	transition: .3s ease all;
+}
+.contenedor-carousel .carousel .pelicula img:hover,
+.contenedor-carousel-estrenos .carousel .pelicula img:hover,
+.contenedor-carousel-todas .carousel .pelicula img:hover,
+.contenedor-carousel-semana .carousel .pelicula img:hover,
+.contenedor-carousel-mes .carousel .pelicula img:hover{
+	transform: scale(1.07);
+	transform-origin: center;
+}
+
+
+.contenedor-carousel .carousel .pelicula img,
+.contenedor-carousel-estrenos .pelicula img,
+.contenedor-carousel-todas .carousel .pelicula img,
+.contenedor-carousel-semana .carousel .pelicula img,
+.contenedor-carousel-mes .carousel .pelicula img{
+    width: 245px;
+    height: 367.5px;
+    border-radius: 20px;
+    margin-top: 9.49px;
+}
+
+
+/*---- datos mostrados ----*/
+
+.mostrados_estrenos, .mostrados_todas,
+.mostrados_semana, .mostrados_mes,
+#div3, #div2, #div4, #div5{
+    display: none;
+}
+
+.innermostrados, .mostrados_estrenos, .mostrados_todas,
+.mostrados_semana, .mostrados_mes, .mostrados_proximas{
+    width: 700px;
+    height: 40px;
+    margin-top: 80px;
+}
+.innermostrados p{
+    color: white;
+    font-size: 1.5em;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+
+
+/*---------  RESPONSIVE SETTING  ---------*/
+@media screen and (max-width: 768px){
+	.contenedor-principal{
+		position: absolute;
+		width: 480px;
+		left: 0;
+		right: 0;
+
+	}
+
+	/* ---- ----- ----- Carousel ----- ----- ----- */
+	.contenedor-carousel, 
+	.contenedor-carousel-estrenos,
+	.contenedor-carousel-todas,
+	.contenedor-carousel-semana,
+	.contenedor-carousel-mes{
+		width: 600px;
+		padding: 20px 0;
+		overflow: hidden;
+		scroll-behavior: smooth;
+		/*margin: auto;*/
+		border-radius: 20px;
+	}
+
+
+	.contenedor-carousel .carousel .pelicula, 
+	.contenedor-carousel-estrenos .carousel .pelicula,
+	.contenedor-carousel-todas .carousel .pelicula,
+	.contenedor-carousel-semana .carousel .pelicula,
+	.contenedor-carousel-mes .carousel .pelicula{
+		background-color: rgba(255, 255, 118, 0);
+		border: 1px solid rgba(0, 0, 0, 0);
+		display: flex;
+		justify-content: center;
+		width: 140px;
+		height: 210px;
+	}
+	.contenedor-carousel .carousel .pelicula img,
+	.contenedor-carousel-estrenos .pelicula img,
+	.contenedor-carousel-todas .carousel .pelicula img,
+	.contenedor-carousel-semana .carousel .pelicula img,
+	.contenedor-carousel-mes .carousel .pelicula img{
+		width: 135px;
+		height: 200px;
+		border-radius: 20px;
+		margin-top: 9.49px;
+	}
+
+
+
+
+
+
+}

@@ -1,0 +1,51 @@
+
+
+
+.mydivlogin{
+    background-color: rgba(255, 99, 71, 0);
+    width: 500px;
+    margin: auto;
+
+}
+.myformlogin{
+    width: 400px;
+    background-color: rgba(216, 191, 216, 0);
+    margin: auto;
+    padding-top: 20px;
+    height: 400px;
+
+}
+.formdiv{
+    margin: auto;
+    background-color: rgba(64, 224, 208, 0);
+    width: 255px;
+    padding-top: 50px;
+}
+.usernamelabel, .passwordlabel, .submitlabel{
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: black;
+}
+.usernamelabel, .passwordlabel{
+    text-align: center;
+    font-size: large;
+    border: none;
+    background-color: white;
+    color: black;
+}
+.submitlabel{
+    color: white;
+    font-weight: bold;
+    background-color: rgb(8, 197, 8);
+    border: none;
+    width: 255px;
+}
+.formdiv p:last-child{
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+#rememberlabel{
+    text-align: center;
+    color: white;
+}
