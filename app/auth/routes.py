@@ -28,11 +28,11 @@ def signup():
             user.set_password(password)
             user.save()
             
-            login_user(user, remember=True)
+            """login_user(user, remember=True)
             next_page = request.args.get('next', None)
             if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('global_access.index')
-            return redirect(next_page)
+                next_page = url_for('global_access.index')"""
+            return redirect('auth.login')
     return render_template('auth/signup.html', form=form, error=error)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
