@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, request, current_app
 from flask_login import current_user, login_user, logout_user
-from werkzeug.urls import url_parse
+
+from urllib.parse import urlparse as url_parse
 
 from app import login_manager
 from . import auth_bp
